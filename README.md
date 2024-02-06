@@ -31,6 +31,8 @@ Note: Make sure that you're running the command inside Stock&Buy.API folder
 You can use OpenAPI or Swagger to request various enpoints via premade templates by just navigation to '/swagger' path within browser.
 
 ## API Documentation
+### Bundles
+
 #### Get all bundles
 
 ```https
@@ -174,3 +176,134 @@ Status Code: 204 NO CONTENT
 ```json
 Status Code: 204 NO CONTENT
 ```
+### Parts
+
+#### Get all parts
+
+```https
+  GET /api/v1/parts
+```
+| Parameter | Type     | 
+| :-------- | :------- |
+| `pageNumber`    | `int` | 
+| `pageSize`      | `int` |  
+
+**Response:**
+```json
+Status Code: 200 OK
+{
+  "items": [
+    {
+      "id": "a4d256c6-2428-42f4-aea2-9b06a62b7af9",
+      "name": "pedal",
+      "stockQuantity": 60
+    },
+    {
+      "id": "41620ed0-27a0-4a61-9bb1-ca973bfe7d4e",
+      "name": "frame",
+      "stockQuantity": 60
+    },
+    {
+      "id": "dbf8bde5-b85e-43e0-b9b8-cd5ccff9d65e",
+      "name": "tube",
+      "stockQuantity": 35
+    }
+  ],
+  "pageNumber": 1,
+  "pageSize": 100,
+  "totalPages": 1,
+  "totalCount": 3
+}
+```
+#### Get part
+
+```https
+  GET /api/v1/parts/${id}
+```
+
+| Parameter | Type     | 
+| :-------- | :------- |
+| `id`      | `guid` |  
+
+**Response:**
+```json
+Status Code: 200 OK
+{
+  "id": "a4d256c6-2428-42f4-aea2-9b06a62b7af9",
+  "name": "pedal",
+  "stockQuantity": 60
+}
+```
+
+#### Add part
+
+```https
+  POST /api/v1/parts
+```
+
+| Body | Type     |
+| :-------- | :------- | 
+| `name`      | `string` |
+| `stockQuantity`      | `int` |
+
+
+**Request:**
+```json
+{
+  "name": "tube",
+  "stockQuantity": 35
+}
+```
+**Response:**
+```json
+Status Code: 200 OK
+{
+  "id": "a4d256c6-2428-42f4-aea2-9b06a62b7af9",
+  "name": "tube",
+  "stockQuantity": 35
+}
+```
+
+#### Delete part
+
+```https
+  DELETE /api/v1/parts/${id}
+```
+
+| Parameter | Type     |
+| :-------- | :------- |
+| `id`      | `guid` |
+
+**Response:**
+```json
+Status Code: 204 NO CONTENT
+```
+
+#### Update part
+
+```https
+  PUT /api/v1/parts/${id}
+```
+| Parameter       | Type     |
+| :-------- | :------- |
+| `id`      | `guid` | 
+
+
+| Body | Type     |
+| :-------- | :------- |
+| `name`      | `string` |
+| `stockQuantity`      | `int` |
+
+**Request:**
+```json
+{
+  "name": "tube",
+  "stockQuantity": 30
+}
+```
+
+**Response:**
+```json
+Status Code: 204 NO CONTENT
+```
+
