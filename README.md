@@ -13,6 +13,10 @@ RESTful API is implemented using .NET 8, and the repository pattern is used for 
 Entity Framework Core 8 is used as the Object-Relational Mapping (ORM) tool to interact with the SQLServer database.
 Global exception handling is set up to catch and handle exceptions at a centralized level, providing consistent error management.
 
+SQL DB Overview 
+![image](https://github.com/faridmzd/Stock-Buy/assets/66147811/86903caf-82e7-4c77-8947-5dfd0ddf7377)
+
+
 ## Features
 
 - Create, Read, Update, Delete products
