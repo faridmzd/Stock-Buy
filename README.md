@@ -176,6 +176,155 @@ Status Code: 204 NO CONTENT
 ```json
 Status Code: 204 NO CONTENT
 ```
+
+#### Get max amount that bundle can be built
+
+```https
+  GET /api/v1/bundles/max/${id}
+```
+
+| Parameter | Type     | 
+| :-------- | :------- |
+| `id`      | `guid` |  
+
+**Response:**
+```json
+Status Code: 200 OK
+{
+  17
+}
+```
+
+#### Associate parts
+
+```https
+  POST /api/v1/bundles/associatedPart
+```
+
+| Body | Type     |
+| :-------- | :------- | 
+| `bundleId`      | `Guid` |
+| `parts`      | `[]` |
+
+
+**Request:**
+```json
+{
+  "bundleId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "parts": [
+    {
+      "partId": "12991C90-1D86-4A14-B936-D074384DF6D7",
+      "quantity": 10
+    },
+    {
+      "partId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "quantity": 2
+    }
+  ]
+}
+```
+**Response:**
+```json
+Status Code: 201 CREATED
+{
+}
+```
+
+#### Associate bundles
+
+```https
+  POST /api/v1/bundles/associatedBundle
+```
+
+| Body | Type     |
+| :-------- | :------- | 
+| `bundleId`      | `Guid` |
+| `bundles`      | `[]` |
+
+
+**Request:**
+```json
+{
+  "bundleId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "bundles": [
+    {
+      "bundleId": "12991C90-1D86-4A14-B936-D074384DF6D7",
+      "quantity": 10
+    },
+    {
+      "bundleId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "quantity": 2
+    }
+  ]
+}
+```
+**Response:**
+```json
+Status Code: 201 CREATED
+{
+}
+```
+
+#### Update associated part
+
+```https
+  PUT /api/v1/bundles/associatedPart/${id}
+```
+| Parameter       | Type     |
+| :-------- | :------- |
+| `id`      | `guid` | 
+
+
+| Body | Type     |
+| :-------- | :------- |
+| `bundleId`      | `guid` |
+| `associatedPartId`      | `guid` |
+| 'quantity' | 'int' |
+
+**Request:**
+```json
+{
+  "bundleId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "associatedPartId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "quantity": 0
+}
+```
+
+**Response:**
+```json
+Status Code: 204 NO CONTENT
+```
+
+#### Update associated bundle
+
+```https
+  PUT /api/v1/bundles/associatedBundle/${id}
+```
+| Parameter       | Type     |
+| :-------- | :------- |
+| `id`      | `guid` | 
+
+
+| Body | Type     |
+| :-------- | :------- |
+| `bundleId`      | `guid` |
+| `associatedBundleId`      | `guid` |
+| 'quantity' | 'int' |
+
+**Request:**
+```json
+{
+  "bundleId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "associatedBundleId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "quantity": 15
+}
+```
+
+**Response:**
+```json
+Status Code: 204 NO CONTENT
+```
+
 ### Parts
 
 #### Get all parts
